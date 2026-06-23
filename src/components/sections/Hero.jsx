@@ -76,7 +76,7 @@ export default function Hero({ scrollTo }) {
             className="cta-btn cta-btn-solid"
             onClick={() => scrollTo("services")}
           >
-            Explore Services
+            Explore Service
           </button>
           <button className="cta-btn" onClick={() => scrollTo("contact")}>
             Get in Touch
