@@ -12,14 +12,7 @@ export default function Hero({ scrollTo }) {
 
       {/* Watermark logo */}
       <div style={heroStyles.bgLogo}>
-        <img
-          src={logoBg}
-          alt=""
-          style={{
-            width: window.innerWidth < 768 ? "300px" : "420px",
-            display: "block",
-          }}
-        />
+        <img src={logoBg} alt="" style={{ width: "420px", display: "block" }} />
       </div>
 
       <div style={{ position: "relative", maxWidth: "800px" }}>
@@ -30,11 +23,7 @@ export default function Hero({ scrollTo }) {
 
         {/* Vertical logo */}
         <div className="hero-title" style={{ marginBottom: "32px" }}>
-          <img
-            src={logoVertical}
-            alt="Kameko"
-            style={{ height: "180px", display: "block", margin: "0 auto" }}
-          />
+          <img src={logoVertical} alt="Kameko" style={{ height: "180px", display: "block", margin: "0 auto" }} />
         </div>
 
         {/* Divider */}
@@ -43,39 +32,21 @@ export default function Hero({ scrollTo }) {
         </div>
 
         {/* Subtitle lines */}
-        <p
-          className="hero-sub"
-          style={{ ...heroStyles.subtitle, marginBottom: "12px" }}
-        >
-          Strategic property consultancy solutions that align real estate
-          decisions
+        <p className="hero-sub" style={{ ...heroStyles.subtitle, marginBottom: "12px" }}>
+          Strategic property consultancy solutions that align real estate decisions
         </p>
-        <p
-          style={{
-            ...heroStyles.subtitle,
-            marginBottom: "52px",
-            animation: "fadeUp 1s ease 1s both",
-            opacity: 0,
-          }}
-        >
+        <p style={{
+          ...heroStyles.subtitle,
+          marginBottom: "52px",
+          animation: "fadeUp 1s ease 1s both",
+          opacity: 0,
+        }}>
           with operational performance and long-term business growth.
         </p>
 
         {/* CTAs */}
-        <div
-          className="hero-cta"
-          style={{
-            display: "flex",
-            gap: "16px",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            marginBottom: "80px",
-          }}
-        >
-          <button
-            className="cta-btn cta-btn-solid"
-            onClick={() => scrollTo("services")}
-          >
+        <div className="hero-cta" style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap", marginBottom: "80px" }}>
+          <button className="cta-btn cta-btn-solid" onClick={() => scrollTo("services")}>
             Explore Services
           </button>
           <button className="cta-btn" onClick={() => scrollTo("contact")}>
@@ -87,13 +58,7 @@ export default function Hero({ scrollTo }) {
       {/* Scroll indicator */}
       <div style={heroStyles.scrollIndicator}>
         <span style={heroStyles.scrollLabel}>Scroll</span>
-        <div
-          style={{
-            width: "1px",
-            height: "32px",
-            background: `linear-gradient(to bottom, ${COLORS.matteGold}, transparent)`,
-          }}
-        />
+        <div style={{ width: "1px", height: "32px", background: `linear-gradient(to bottom, ${COLORS.matteGold}, transparent)` }} />
       </div>
     </section>
   );
