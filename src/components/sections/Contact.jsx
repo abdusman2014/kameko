@@ -1,10 +1,9 @@
-
-
 import { COLORS } from "../../constants/theme";
 import { sectionStyles, contactStyles } from "../../styles/styles";
 import GoldDivider from "../GoldDivider";
 
 import { useState } from "react";
+import { createClient } from "@supabase/supabase-js";
 
 export default function Contact({ contactFields }) {
   const [loading, setLoading] = useState(false);
@@ -20,14 +19,24 @@ export default function Contact({ contactFields }) {
     setStatus(null);
     console.log(formData);
     try {
-      const res = await fetch("/api/send-enquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      );
+      const { data, error } = await supabase.functions.invoke(
+        "send-enquiry-email-kameko",
+        {
+          body: formData, //JSON.stringify(formData),
+        },
+      );
+      // const res = await fetch("/api/send-enquiry", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(formData),
+      // });
 
-      const result = await res.json();
-      if (!res.ok) throw new Error(result.error || "Something went wrong");
+      // const result = await res.json();
+      // if (!res.ok) throw new Error(result.error || "Something went wrong");
 
       setStatus("success");
     } catch (err) {
