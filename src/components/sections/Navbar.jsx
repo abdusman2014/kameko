@@ -1,7 +1,7 @@
-import { COLORS } from "../../constants/theme";
+import { COLORS, FONTS } from "../../constants/theme";
 import { navStyles } from "../../styles/styles";
 import { useScrolled } from "../../hooks/useScrolled";
-import logoHorizontal from "../../assets/logo-horizontal.png";
+import logoMark from "../../assets/logo-mark.png";
 
 export default function Navbar({ navLinks, scrollTo, menuOpen, toggleMenu }) {
   const scrolled = useScrolled();
@@ -9,8 +9,23 @@ export default function Navbar({ navLinks, scrollTo, menuOpen, toggleMenu }) {
   return (
     <>
       <nav style={navStyles.nav(scrolled)}>
-        <div style={{ cursor: "pointer" }} onClick={() => scrollTo("hero")}>
-          <img src={logoHorizontal} alt="Kameko" style={{ height: "44px", display: "block" }} />
+        <div
+          style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: "10px" }}
+          onClick={() => scrollTo("hero")}
+        >
+          <img src={logoMark} alt="Kameko" style={{ height: "32px", display: "block" }} />
+          <span
+            style={{
+              fontFamily: FONTS.heading,
+              fontSize: "20px",
+              fontWeight: 500,
+              letterSpacing: "5px",
+              color: COLORS.matteGold,
+              lineHeight: 1,
+            }}
+          >
+            KAMEKO
+          </span>
         </div>
 
         <div className="nav-links" style={{ display: "flex", gap: "36px", alignItems: "center" }}>

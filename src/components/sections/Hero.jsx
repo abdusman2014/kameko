@@ -1,7 +1,7 @@
 import { COLORS } from "../../constants/theme";
 import { heroStyles } from "../../styles/styles";
 import GoldDivider from "../GoldDivider";
-import logoVertical from "../../assets/logo-vertical.png";
+import logoVertical from "../../assets/secondarylogo.png";
 import logoBg from "../../assets/logo-background.png";
 
 export default function Hero({ scrollTo }) {

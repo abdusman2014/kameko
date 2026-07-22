@@ -3,7 +3,7 @@ import { sectionStyles, contactStyles } from "../../styles/styles";
 import GoldDivider from "../GoldDivider";
 
 import { useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "../../lib/supabase";
 
 export default function Contact({ contactFields }) {
   const [loading, setLoading] = useState(false);
@@ -17,28 +17,18 @@ export default function Contact({ contactFields }) {
   const handleSubmit = async () => {
     setLoading(true);
     setStatus(null);
-    console.log(formData);
     try {
-      const supabase = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-      );
-      const { data, error } = await supabase.functions.invoke(
+      const { error } = await supabase.functions.invoke(
         "send-enquiry-email-kameko",
         {
-          body: formData, //JSON.stringify(formData),
+          body: formData,
         },
       );
-      // const res = await fetch("/api/send-enquiry", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(formData),
-      // });
 
-      // const result = await res.json();
-      // if (!res.ok) throw new Error(result.error || "Something went wrong");
+      if (error) throw error;
 
       setStatus("success");
+      setFormData({ message: "" });
     } catch (err) {
       console.error(err);
       setStatus("error");
